@@ -1,0 +1,41 @@
+{% load static from static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>aricles-list</title> -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+          <div class="container nav-container">
+            <div >
+              <h1><a href="{% url 'home' %}" class="logo-link">BLOG</a></h1>
+            </div>
+            <div class="menu-item">
+              {%if user.is_authenticated %}
+                  <li>
+                      <form  action="{% url 'accounts:logout'%}" method="post">
+                          {%csrf_token%}
+                          <input type="submit" value="Logout"/>
+                      </form>
+                  </li>
+                  <li><a href="{% url 'articles:create' %}" >New Article</a></li>
+                  {% else %}
+                  <li><a href="{% url 'accounts:login'%}">Login</a></li>
+                  <li><a href="{% url 'accounts:signup'%}">SignUp</a></li>
+                  {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>  
+        {% block content %}
+        {% endblock %}
+</body>
+</html>
+
+
+
+  
