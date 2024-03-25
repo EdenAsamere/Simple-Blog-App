@@ -4,6 +4,11 @@
         <form class="site-form" action="{% url 'accounts:login' %}" method="post">
             {% csrf_token %}
             {{form}}
+            {% if form.errors %}
+            <div class="error-message">
+                Please correct the error above.
+            </div>
+        {% endif %}
             {% if request.GET.next %}
                 <input type="hidden" value="{{request.GET.next}}" name="next"/>
             {% endif %}
@@ -12,3 +17,4 @@
          
     </div>
 {%endblock%}
+

@@ -1,10 +1,10 @@
 {%extends 'baseLayout.html'%}
 {%block content%}
     <div class="create-article">
-       <h2>create new article</h2>
        <form class="site-form" method="post" action="{%url 'articles:create'%}" enctype="multipart/form-data">
         {%csrf_token%}
         {{form}}
+        <br/>
         <input type="submit" value="Create">
        </form>
     </div>

@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from . import forms
 # Create your views here.
 
+
 def article_list(request):
     articles = Article.objects.all().order_by('date')
     return render(request,'articles/articles-list.html',{'articles':articles})

@@ -9,17 +9,15 @@ a{
 }
  */
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+ @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
  body {
     background: hwb(240 4% 95%);
     color: white;
-    /* display: flex;
-    flex-direction: column; */
     font-size: 1rem;
-    /* justify-content: center;
-    align-items: center; */
     height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    
 }
 
 a {
@@ -254,63 +252,152 @@ body {
   margin: auto;
 }
 
-
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 62px;
+.navbar {
+    font-size: 18px;
+    border-bottom: #615858 4px solid;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    padding-bottom: 40px;
+    margin-bottom: 20px;
 }
 
-.navbar .nav-container li {
-  list-style: none;
+.main-nav {
+    list-style-type: none;
+    display: none;
 }
 
-.navbar .nav-container a {
-  text-decoration: none;
-  color: white;
-  font-weight:bold;
-  font-size: 2rem;
-  padding: 0.7rem;
+.nav-links, .logo, .material-icons {
+    text-decoration: none;
+    color: ghostwhite;
+    opacity: 0.6;
 }
 
-.navbar .nav-container a:hover{
-    font-weight: bolder;
-}
-
-.nav-container {
-  display: block;
-  position: relative;
-  height: 60px;
-}
-/* .navbar .menu-items li {
-  margin-bottom: 1.2rem;
-  font-size: 1.5rem;
-  font-weight: 500;
-} */
-.navbar .menu-item{
-    display: flex;
-}
-.navbar .menu-item {
-    padding-top: 120px;
-    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
-    height: 100vh;
-    width: 100%;
-    transform: translate(-150%);
-    display: flex;
-    flex-direction: column;
-    margin-left: -40px;
-    padding-left: 50px;
-    transition: transform 0.5s ease-in-out;
+.main-nav li {
     text-align: center;
+    margin: 10px auto;
+}
+
+.logo {
+    display: flex;
+    font-size: 24px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+
+.logo p {
+    margin-top: 12px;
+    padding-left: 5px;
+    font-weight: bold;
+}
+
+.toggle-nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.material-icons {
+    font-size: 24px;
+}
+
+
+@media screen and (min-width:600px) {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 0;
+        height: 70px;
+        align-items: center;
+    }
+    .toggle-nav {
+        display: none;
+    }
+    .main-nav {
+        display: flex;
+        justify-content: end;
+        margin-right: 30px;
+    }
+    .main-nav>li {
+        margin: 0;
+    }
+    .nav-links {
+        margin-left: 20px;
+    }
 }
   
 
-.logo-link{
-  position: absolute;
-  top: 20px;
-  left: 15px;
-  font-size:20px;
-  color: white;
+/* styles.css */
+.site-form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #161515d5;
 }
 
+.site-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.site-form input[type="text"],
+.site-form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.site-form input[type="text"]:focus,
+.site-form input[type="password"]:focus {
+    outline: none;
+    border-color: #2c528b;
+}
+
+.site-form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #1a1c1f;
+    color: #fff;
+    border-color: #525151 ;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.site-form input[type="submit"]:hover {
+    background-color: #3e4246;
+}
+.site-form input[type="text"].error,
+.site-form input[type="password"].error {
+    border-color: #ff0000; /* Change border color to red */
+}
+
+.site-form .error-message {
+    color: #ff0000; /* Change text color to red */
+    font-size: 0.8rem; /* Adjust font size */
+    margin-top: 5px; /* Add margin top to separate from the input field */
+}
+.logout-button {
+    background-color: #232425; /* Blue background color */
+    color: #fff; /* White text color */
+    padding: 10px 10px; /* Padding for button */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Show pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.logout-button:hover {
+    background-color: #4d4e50; /* Darker blue background color on hover */
+}
+
+/* Submit button with error styles */
+.site-form input[type="submit"]:disabled {
+    background-color: #ccc; /* Gray background color for disabled button */
+    cursor: not-allowed; /* Change cursor to not-allowed */
+}

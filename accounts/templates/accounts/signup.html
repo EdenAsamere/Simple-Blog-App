@@ -1,11 +1,19 @@
-{%extends 'baseLayout.html'%}
-{%block content%} 
+{% extends 'baseLayout.html' %}
+
+{% block content %}
     <div>
-        <h1>SignUp</h1>
         <form class="site-form" action="{% url 'accounts:signup' %}" method="post">
             {% csrf_token %}
-            {{form}}
-            <input type="submit" value="SignUp" name="signup">
-        </form>  
+            {% for field in form %}
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    <div class="error-message">
+                        {{ field.errors }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <input type="submit" value="Sign Up">
+        </form>
     </div>
-{%endblock%}
+{% endblock %}

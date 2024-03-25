@@ -5,32 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <title>aricles-list</title> -->
+ 
     <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+ 
 </head>
 <body>
-    <nav>
-        <div class="navbar">
-          <div class="container nav-container">
-            <div >
-              <h1><a href="{% url 'home' %}" class="logo-link">BLOG</a></h1>
-            </div>
-            <div class="menu-item">
-              {%if user.is_authenticated %}
+  <nav class="navbar">
+    <span class="toggle-nav" id="toggle-nav">
+        <i class="material-icons">menu</i>
+    </span>
+    <!-- <div class=""> -->
+    <a href="#" class="logo">
+        <p>BLOG</p>
+    </a>
+    <!-- </div> -->
+    <ul class="main-nav" id="main-nav">
+      {%if user.is_authenticated %}
                   <li>
-                      <form  action="{% url 'accounts:logout'%}" method="post">
-                          {%csrf_token%}
-                          <input type="submit" value="Logout"/>
-                      </form>
+                    <form action="{% url 'accounts:logout' %}" method="post">
+                      {% csrf_token %}
+                      <button type="submit" class="logout-button">Logout</button>
+                  </form>
                   </li>
-                  <li><a href="{% url 'articles:create' %}" >New Article</a></li>
+                  <li><a href="{% url 'articles:create' %}" class="nav-links" >New Article</a></li>
                   {% else %}
-                  <li><a href="{% url 'accounts:login'%}">Login</a></li>
-                  <li><a href="{% url 'accounts:signup'%}">SignUp</a></li>
+                  <li><a href="{% url 'accounts:login'%}" class="nav-links">Login</a></li>
+                  <li><a href="{% url 'accounts:signup'%}" class="nav-links">SignUp</a></li>
                   {% endif %}
-            </div>
-          </div>
-        </div>
-      </nav>  
+      </ul>
+  </nav>
+      <script>
+          let mainNav = document.getElementById('main-nav');
+          let toggleNav = document.getElementById('toggle-nav');
+          toggleNav.addEventListener('click', function () {
+              mainNav.classList.toggle('active')
+          });
+      </script>
+
         {% block content %}
         {% endblock %}
 </body>
@@ -39,3 +51,5 @@
 
 
   
+
+
